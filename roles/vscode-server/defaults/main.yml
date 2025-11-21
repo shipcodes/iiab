@@ -1,0 +1,20 @@
+# VS Code Server (code-server) - Browser-based VS Code IDE
+
+# vscode_server_install: False
+# vscode_server_enabled: False
+
+# All above are set in: github.com/iiab/iiab/blob/master/vars/default_vars.yml
+# If nec, change them by editing /etc/iiab/local_vars.yml prior to installing!
+
+vscode_server_version: 4.106.2  # Check latest at: https://github.com/coder/code-server/releases
+vscode_server_port: 8443
+vscode_server_url: /vscode     # For SHORT URL http://box/vscode
+
+vscode_server_base: "{{ content_base }}/vscode-server"  # /library/vscode-server
+vscode_server_user: root
+vscode_server_password: "changeme"  # Will be hashed during installation
+
+# Installation paths
+vscode_server_install_dir: /usr/local/lib/code-server
+vscode_server_data_dir: "{{ vscode_server_base }}/data"
+vscode_server_extensions_dir: "{{ vscode_server_base }}/extensions"

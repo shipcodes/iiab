@@ -1,0 +1,19 @@
+- name: Enable & restart 'vscode-server' systemd service, with nginx
+  systemd:
+    name: vscode-server
+    enabled: yes
+    state: restarted
+  when: vscode_server_enabled and nginx_install
+
+- name: Restart 'nginx' systemd service (for VS Code Server proxy)
+  systemd:
+    name: nginx
+    state: restarted
+  when: vscode_server_enabled and nginx_install
+
+- name: Disable & stop 'vscode-server' systemd service
+  systemd:
+    name: vscode-server
+    enabled: no
+    state: stopped
+  when: not vscode_server_enabled

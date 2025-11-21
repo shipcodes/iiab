@@ -1,0 +1,22 @@
+[Unit]
+Description=VS Code Server (code-server)
+After=network.target
+
+[Service]
+Type=simple
+User={{ vscode_server_user }}
+WorkingDirectory={{ vscode_server_base }}
+Environment="PASSWORD={{ vscode_server_password }}"
+ExecStart=/usr/local/bin/code-server \
+  --bind-addr 127.0.0.1:{{ vscode_server_port }} \
+  --user-data-dir {{ vscode_server_data_dir }} \
+  --extensions-dir {{ vscode_server_extensions_dir }} \
+  --disable-telemetry \
+  --disable-update-check \
+  {{ vscode_server_base }}
+
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
