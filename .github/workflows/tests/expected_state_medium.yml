@@ -10,8 +10,8 @@ nginx_installed: True
 www_base_installed: True
 pylibs_installed: True
 usb_lib_installed: True
-vscode_server_installed: True
 www_options_installed: True
+vscode_server_installed: True
 mysql_installed: True
 nextcloud_installed: True
 wordpress_installed: True
