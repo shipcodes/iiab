@@ -113,6 +113,10 @@
     state: restarted
   when: hostapd_enabled and not no_net_restart and wifi_slave.stdout is defined and wifi_slave.stdout == 0
 
+# IMPORTANT: dnsmasq restart by network mode (GitHub issue #4099)
+# Appliance: No LAN, restart SKIPPED
+# LanController/Gateway: Have LAN, restart REQUIRED (uses bind-dynamic to avoid race condition)
+# GitHub Actions detects Appliance mode (no interfaces) → restart skipped → safe
 #systemd-networkd should have br0 available if hostapd was started and Appliance lacks br0
 #keep an eye on legacy wifi installs where br0 is present but not 'online' with an ip address
 #due to hostapd didn't go to a carrier state. All others should get dnsmasq restarted
